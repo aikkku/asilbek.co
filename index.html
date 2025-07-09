@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+	<meta charset="utf-8">
+	<title>Test single</title>
+	<link rel="stylesheet" type="text/css" href="/css/simple_console.css">
+	<style type="text/css" media="screen">
+		html, body {
+			padding: 0;
+			margin: 0;
+			font-size: 1em;
+			line-height: 1; 
+			font-family: 'Simple Console', monospace;
+            background-color: black;
+		}
+
+        h1 {
+            position: absolute;
+            text-align: center;
+            width: 100vw;
+            margin-top: 10vh;
+            z-index: 1;
+        }
+
+        .background {
+			position: absolute;
+			margin:0;
+			padding:0;
+			left:0;
+			top:0;
+			width:100vw;
+			height:100vh;
+			font-family: inherit;
+            z-index: 99;
+			background-color: rgba(0, 0, 0, 0.01);
+			pointer-events: none;
+        }
+
+        .buttons {
+			position: absolute;
+			margin:0px;
+			padding:0;
+			left:0;
+			top:0;
+			width:100vw;
+			height:100vh;
+			font-family: inherit;
+            z-index: 2;
+		}
+	</style>
+</head>
+<body>
+    <h1>Asilbek Ismatilloev</h1>
+
+    <pre class="background"></pre>
+    <pre class="buttons"></pre>
+
+    
+	<script type="module">
+	import { run } from '/src/run.js'
+	import * as buttons from '/src/programs/demos/box_fun.js'
+	import * as background from '/src/programs/demos/dyna.js'
+	import { getX, getY }  from '/src/pointer.js'
+
+	const back = document.querySelector('.background')
+	const bts  = document.querySelector('.buttons')
+
+	// Animate / render loop
+	function loop() {
+		const x = getX()
+		const y = getY()
+		console.log('In animation loop:', x, y)
+		requestAnimationFrame(loop)
+	}
+	loop()
+
+	run(buttons, { element : bts } ).catch(errorHandler)
+	run(background, { element : back } ).catch(errorHandler)
+
+	function errorHandler(e) {
+		console.warn(e.message)
+		console.log(e.error)
+	}
+</script>
+</body>
+</html>
