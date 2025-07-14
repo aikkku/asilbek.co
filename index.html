@@ -2,7 +2,9 @@
 <html lang="en" >
 <head>
 	<meta charset="utf-8">
-	<title>Test single</title>
+	<title>Asilbek Ismatilloev – Portfolio & Projects</title>
+	<meta name="description" content="Welcome to the personal portfolio of Asilbek Ismatilloev – a passionate developer building web apps, solving algorithmic challenges, and creating impact through code.">
+	<meta name="keywords" content="Asilbek, Asilbek Ismatilloev, software engineer, portfolio, web developer, projects, coding, C++, JavaScript, Python, Uzbek developer, personal website, GitHub, resume, full stack developer, IMKON, study abroad">
 	<link rel="stylesheet" type="text/css" href="/css/simple_console.css">
 	<style type="text/css" media="screen">
 		html, body {
@@ -19,7 +21,7 @@
             text-align: center;
             width: 100vw;
             margin-top: 10vh;
-            z-index: 1;
+            z-index: 3;
         }
 
         .background {
@@ -48,6 +50,30 @@
             z-index: 2;
 		}
 	</style>
+
+	<script>
+		let c = '';
+		let g = '';
+		window.onblur = () => {
+			g = " Please COMEBACK!";
+		};
+
+		window.onfocus = () => {
+			g = " This is the newpage title.";
+		};
+
+		let i = 0;
+		let s = ["◢", "◣", "◤", "◥"];
+
+		function loop() {
+			c = s[i];
+			i++;
+			document.title = c + g;
+			i = i%4;
+		}
+
+		setInterval(loop, 200);
+	</script>
 </head>
 <body>
     <h1>Asilbek Ismatilloev</h1>
@@ -64,6 +90,7 @@
 
 	const back = document.querySelector('.background')
 	const bts  = document.querySelector('.buttons')
+
 
 	// Animate / render loop
 	function loop() {
